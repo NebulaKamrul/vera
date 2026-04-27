@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { OptimizationResult } from '../types';
+import ResumeEditor from './ResumeEditor';
 
 // ─── Shared copy + download utilities ─────────────────────────────────────
 
@@ -75,27 +76,6 @@ function Card({ children }: { children: React.ReactNode }) {
 
 // ─── Result sections ───────────────────────────────────────────────────────
 
-function TailoredResume({ text, copyKey, copiedKey, copy }: {
-  text: string;
-  copyKey: string;
-  copiedKey: string | null;
-  copy: (text: string, key: string) => void;
-}) {
-  return (
-    <Card>
-      <SectionTitle>tailored resume</SectionTitle>
-      <pre className="text-sm text-charcoal font-light leading-relaxed whitespace-pre-wrap font-sans">
-        {text}
-      </pre>
-      <ActionBar
-        onCopy={() => copy(text, copyKey)}
-        copied={copiedKey === copyKey}
-        onDownload={() => downloadTxt(text, 'tailored-resume.txt')}
-      />
-    </Card>
-  );
-}
-
 function KeywordMatch({ matched, missing }: {
   matched: string[];
   missing: string[];
@@ -139,21 +119,6 @@ function KeywordMatch({ matched, missing }: {
   );
 }
 
-function Suggestions({ items }: { items: string[] }) {
-  return (
-    <Card>
-      <SectionTitle>suggestions</SectionTitle>
-      <ul className="flex flex-col gap-3">
-        {items.map((s, i) => (
-          <li key={i} className="flex gap-3 text-sm text-charcoal font-light leading-relaxed">
-            <span className="text-espresso mt-0.5 shrink-0">·</span>
-            <span>{s}</span>
-          </li>
-        ))}
-      </ul>
-    </Card>
-  );
-}
 
 function CoverLetter({ text, copyKey, copiedKey, copy }: {
   text: string;
@@ -220,17 +185,14 @@ export default function OutputPanel({ result, isLoading, loadingMessage }: Props
 
   return (
     <div className="flex flex-col gap-6">
-      <TailoredResume
-        text={result.tailoredResume}
-        copyKey="resume"
-        copiedKey={copiedKey}
-        copy={copy}
+      <ResumeEditor
+        rawText={result.tailoredResume}
+        suggestions={result.suggestions}
       />
       <KeywordMatch
         matched={result.matchedKeywords}
         missing={result.missingKeywords}
       />
-      <Suggestions items={result.suggestions} />
       <CoverLetter
         text={result.coverLetter}
         copyKey="cover"
