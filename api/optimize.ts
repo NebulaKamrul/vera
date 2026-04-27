@@ -48,7 +48,7 @@ export default async function handler(req: any, res: any) {
 
   try {
     // Check aistudio.google.com/models for the latest stable model name
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-preview-04-17' });
     const result = await model.generateContent(buildPrompt(resumeText, jobDescription));
     const raw = result.response.text().trim();
 
