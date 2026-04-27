@@ -63,8 +63,8 @@ export default function App() {
     try {
       const output = await generateOptimizedResume(resumeText, jobDescription);
       setResult(output);
-    } catch {
-      setError('Something went wrong. Please try again.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
     }

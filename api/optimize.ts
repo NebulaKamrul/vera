@@ -46,19 +46,22 @@ export default async function handler(req: any, res: any) {
     return res.status(400).json({ error: 'Both resumeText and jobDescription are required.' });
   }
 
+  if (!process.env.GEMINI_API_KEY) {
+    return res.status(500).json({ error: 'GEMINI_API_KEY is not set in Vercel environment variables.' });
+  }
+
   try {
-    // Check aistudio.google.com/models for the latest stable model name
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-preview-04-17' });
     const result = await model.generateContent(buildPrompt(resumeText, jobDescription));
     const raw = result.response.text().trim();
 
-    // Strip markdown code fences if the model adds them
     const cleaned = raw.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '');
     const parsed = JSON.parse(cleaned);
 
     return res.status(200).json(parsed);
   } catch (err) {
-    console.error('Optimization error:', err);
-    return res.status(500).json({ error: 'Failed to generate optimization. Please try again.' });
+    const message = err instanceof Error ? err.message : String(err);
+    console.error('Optimization error:', message);
+    return res.status(500).json({ error: message });
   }
 }
