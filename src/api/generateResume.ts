@@ -5,34 +5,64 @@ function buildMockResponse(resumeText: string): OptimizationResult {
   const hasContent = resumeText.trim().length > 20;
 
   const tailoredResume = hasContent
-    ? `${resumeText.trim()}\n\n─────────────────────────────────────\nvera: deploy to Vercel and add your GEMINI_API_KEY to see a real rewrite.\n─────────────────────────────────────`
-    : `JANE DOE
-(555) 123-4567 · jane@email.com · linkedin.com/in/janedoe
+    ? `Jane Doe
+Toronto, ON • jane@email.com • (555) 123-4567
 
 PROFESSIONAL SUMMARY
-Dependable and organized professional with 5+ years of experience in customer
-service and administrative support. Known for clear communication, careful
-record-keeping, and a calm, helpful presence with clients and colleagues alike.
+**Customer service professional** with 5+ years of experience in **client relations** and **administrative support**. Known for clear communication, careful record-keeping, and a calm presence with clients and colleagues.
 
-EXPERIENCE
+EMPLOYMENT HISTORY
+CUSTOMER SERVICE ASSOCIATE | Jan 2019 – Present
+Maple & Co. | Toronto, ON
+• Handled **50+ daily client inquiries**, maintaining a **97% satisfaction rate**
+• Managed **scheduling and appointment coordination** for a team of 8
+• Maintained accurate records in **CRM system** with zero data loss incidents
+• Resolved billing discrepancies and escalated complex cases to senior staff
 
-Customer Service Associate · Maple & Co.  |  2019 – Present
-· Handled 50+ customer inquiries daily, maintaining a 97% satisfaction rate
-· Coordinated scheduling and appointment management for a team of 8
-· Maintained accurate data entry in company records and CRM system
-· Resolved billing discrepancies and escalated complex cases as needed
-
-Administrative Assistant · Sunrise Services  |  2017 – 2019
-· Supported daily office operations and provided executive assistance
-· Processed and organized confidential client documents
-· Assisted with onboarding materials for 15+ new hires
+ADMINISTRATIVE ASSISTANT | Mar 2017 – Dec 2018
+Sunrise Services | Toronto, ON
+• Supported daily office operations and provided **executive-level assistance**
+• Processed and organized confidential client documents following compliance guidelines
+• Assisted with onboarding materials and orientation for 15+ new hires
 
 EDUCATION
-Associate Degree, Business Administration · Lakeview College  |  2017
+ASSOCIATE DEGREE, BUSINESS ADMINISTRATION | 2017
+Lakeview College | Lakeview, ON
 
 SKILLS
-Microsoft Office · Customer Relationship Management · Data Entry
-Scheduling & Calendar Management · Team Collaboration · Written Communication`;
+Customer Relations: CRM software, conflict resolution, client satisfaction tracking
+Administration: Microsoft Office 365, data entry, calendar management
+Communication: written correspondence, team collaboration, reporting
+
+─────────────────────────────────────
+vera: add your GEMINI_API_KEY in Vercel to see a real AI rewrite of your resume.
+─────────────────────────────────────`
+    : `Jane Doe
+Toronto, ON • jane@email.com • (555) 123-4567
+
+PROFESSIONAL SUMMARY
+**Customer service professional** with 5+ years of experience in **client relations** and **administrative support**. Known for clear communication, careful record-keeping, and a calm presence with clients and colleagues.
+
+EMPLOYMENT HISTORY
+CUSTOMER SERVICE ASSOCIATE | Jan 2019 – Present
+Maple & Co. | Toronto, ON
+• Handled **50+ daily client inquiries**, maintaining a **97% satisfaction rate**
+• Managed **scheduling and appointment coordination** for a team of 8
+• Maintained accurate records in **CRM system** with zero data loss incidents
+
+ADMINISTRATIVE ASSISTANT | Mar 2017 – Dec 2018
+Sunrise Services | Toronto, ON
+• Supported daily office operations and provided **executive-level assistance**
+• Processed and organized confidential client documents
+• Assisted with onboarding materials for 15+ new hires
+
+EDUCATION
+ASSOCIATE DEGREE, BUSINESS ADMINISTRATION | 2017
+Lakeview College | Lakeview, ON
+
+SKILLS
+Customer Relations: CRM software, conflict resolution, satisfaction tracking
+Administration: Microsoft Office 365, data entry, calendar management`;
 
   return {
     tailoredResume,

@@ -108,7 +108,7 @@ function SectionContent({ content, opts }: { content: string; opts: StyleOptions
             {group.map((line, i) => {
               const absIdx = offset + i;
               const prevKind = absIdx > 0 ? allClassified[absIdx - 1].kind : '';
-              const isSubtitle = line.kind === 'text' && (prevKind === 'entry' || (prevKind === 'text' && absIdx > 1 && allClassified[absIdx - 2].kind === 'entry'));
+              const isSubtitle = line.kind === 'text' && prevKind === 'entry';
 
               if (line.kind === 'empty') return <View key={i} style={styles.emptyLine} />;
               if (line.kind === 'bullet') return (

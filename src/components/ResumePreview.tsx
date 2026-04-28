@@ -58,7 +58,7 @@ function SectionContent({ content, accent, template }: { content: string; accent
     <div>
       {classified.map((line, i) => {
         const prevKind = i > 0 ? classified[i - 1].kind : '';
-        const isSubtitle = line.kind === 'text' && (prevKind === 'entry' || (prevKind === 'text' && i > 1 && classified[i - 2].kind === 'entry'));
+        const isSubtitle = line.kind === 'text' && prevKind === 'entry';
 
         if (line.kind === 'empty') return <div key={i} style={{ height: template === 'compact' ? '3px' : '5px' }} />;
 
