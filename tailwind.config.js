@@ -27,6 +27,8 @@ export default {
       animation: {
         blink: 'blink 1s step-end infinite',
         'fade-in': 'fadeIn 0.4s ease-out',
+        scan: 'scan 1.8s ease-in-out infinite',
+        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
       },
       keyframes: {
         blink: {
@@ -36,6 +38,15 @@ export default {
         fadeIn: {
           from: { opacity: '0', transform: 'translateY(6px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        scan: {
+          '0%': { transform: 'translateY(0%)' },
+          '50%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0%)' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '1' },
         },
       },
     },

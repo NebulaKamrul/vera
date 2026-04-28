@@ -25,8 +25,8 @@ function isSectionHeader(line: string): boolean {
   const upper = line.trim().toUpperCase();
   if (!upper) return false;
   if (SECTION_HEADERS.some(h => upper === h || upper.startsWith(h))) return true;
-  // Heuristic: short ALL-CAPS line with no sentence-ending punctuation
-  if (upper === line.trim() && line.trim().length < 45 && !/[.!?,]$/.test(line.trim())) return true;
+  // Heuristic: short ALL-CAPS line (must contain at least one letter) with no sentence-ending punctuation
+  if (/[A-Z]/.test(upper) && upper === line.trim() && line.trim().length < 45 && !/[.!?,]$/.test(line.trim())) return true;
   return false;
 }
 

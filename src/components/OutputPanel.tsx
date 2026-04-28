@@ -101,7 +101,7 @@ function KeywordMatch({ matched, missing }: {
         </div>
         <div>
           <p className="text-xs font-medium text-stone uppercase tracking-widest mb-2.5">
-            missing — worth adding if true
+            missing... worth adding if true
           </p>
           <div className="flex flex-wrap gap-2">
             {missing.map(kw => (
@@ -162,7 +162,7 @@ function EmptyState() {
     <div className="flex flex-col items-center justify-center h-full min-h-[320px] gap-3 opacity-60">
       <p className="font-serif text-2xl text-charcoal">your results will appear here</p>
       <p className="text-sm text-stone text-center max-w-xs leading-relaxed">
-        Paste your resume and the job description on the left, then click
+        paste your resume and the job description on the left, then click
         &ldquo;optimize my resume&rdquo;
       </p>
     </div>
